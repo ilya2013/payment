@@ -1,10 +1,8 @@
 package ru.ibesh.payment;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import ru.ibesh.Identifiable;
 
 @Getter
 @Setter
@@ -32,7 +30,7 @@ public class CreditCard implements PaymentInstrument{
 
     @Override
     public void debitingFunds(int amount) {
-        if (balance + (limit - usedLimit) < amount){
+        if (availableMoney() < amount){
             throw new NotEnoughMoney("Not enough money!");
         }
         if (balance >= amount){

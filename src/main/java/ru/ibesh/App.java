@@ -1,18 +1,16 @@
 package ru.ibesh;
 
-import ru.ibesh.service.Pay;
+import ru.ibesh.service.PayService;
 import ru.ibesh.storage.UserStorage;
-import ru.ibesh.storage.UserStorageImpl;
 import ru.ibesh.ui.UserNotFound;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Sbol {
+public class App {
     private UserStorage userStorage;
-    private List<Pay> payOperations;
+    private List<PayService> payOperations;
 
-    public Sbol(UserStorage userStorage, List<Pay> payOperations) {
+    public App(UserStorage userStorage, List<PayService> payOperations) {
         this.userStorage = userStorage;
         this.payOperations = payOperations;
     }

@@ -1,7 +1,6 @@
-package ru.ibesh.payment.manager;
+package ru.ibesh.payment.handler;
 
 import ru.ibesh.payment.Payment;
-import ru.ibesh.payment.Status;
 
 public interface PaymentHandler {
     void init();

@@ -1,10 +1,5 @@
 package ru.ibesh.payment;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 public  interface PaymentInstrument {
     int getBalance();
     int availableMoney();

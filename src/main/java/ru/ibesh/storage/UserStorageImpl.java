@@ -3,7 +3,6 @@ package ru.ibesh.storage;
 import ru.ibesh.User;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Optional;
 
 public class UserStorageImpl implements UserStorage {
