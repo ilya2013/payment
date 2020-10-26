@@ -1,21 +1,11 @@
 package ru.ibesh;
 
-import ru.ibesh.service.PayService;
-import ru.ibesh.storage.UserStorage;
-import ru.ibesh.ui.UserNotFound;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.List;
-
+@SpringBootApplication
 public class App {
-    private UserStorage userStorage;
-    private List<PayService> payOperations;
-
-    public App(UserStorage userStorage, List<PayService> payOperations) {
-        this.userStorage = userStorage;
-        this.payOperations = payOperations;
-    }
-    public Long logIn(String login) {
-        User user = userStorage.findUserByLogin(login).orElseThrow(UserNotFound::new);
-        return user.getUserId();
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
     }
 }

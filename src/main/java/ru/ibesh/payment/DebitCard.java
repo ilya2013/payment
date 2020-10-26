@@ -3,45 +3,49 @@ package ru.ibesh.payment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-import ru.ibesh.Identifiable;
 
-@ToString
+import javax.persistence.Entity;
 @Getter
 @Setter
 @AllArgsConstructor
-public class DebitCard implements PaymentInstrument {
-    private final String cardNumber;
-    private int balance;
-    private final Currency currency;
+@Entity
+public class DebitCard extends Card{
 
-    public DebitCard(String cardNumber, int balance) {
-        this.cardNumber = cardNumber;
-        this.balance = balance;
-        this.currency = Currency.RUB;
+    public DebitCard(String cardNumber, int balance, Currency currency) {
+        super(cardNumber, balance, currency);
     }
 
     @Override
     public int availableMoney() {
-        return balance;
+        return getBalance();
     }
 
     @Override
     public void debitingFunds(int amount) {
-        if (availableMoney() < amount) {
-            throw new NotEnoughMoney(String.format("Недостаточно средств на карте %s: %d %s", cardNumber, amount, currency));
+        if (!isEnough2Pay(amount)) {
+            throw new NotEnoughMoney(String.format("Недостаточно средств на карте %s: %d %s", getCardNumber(), amount, getCurrency()));
         }
-        balance -= amount;
+         setBalance(availableMoney() - amount);
     }
 
     @Override
     public void addingFunds(int amount) {
-        amount += amount;
+        setBalance( availableMoney() + amount);
     }
 
     @Override
     public boolean isEnough2Pay(int amount) {
-        return balance >= amount;
+        return availableMoney() >= amount;
     }
 
+    @Override
+    public String toString() {
+        return "DebitCard{" +
+                "id=" + id +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", balance=" + balance +
+                ", currency=" + currency +
+                ", user_id=" + user.getId() +
+                '}';
+    }
 }

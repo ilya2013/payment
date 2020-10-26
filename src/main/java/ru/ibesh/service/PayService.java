@@ -1,10 +1,9 @@
 package ru.ibesh.service;
 
 import ru.ibesh.User;
-import ru.ibesh.payment.PaymentInstrument;
+import ru.ibesh.payment.Card;
+import ru.ibesh.payment.Payment;
 
 public interface PayService {
-    static boolean pay(User user, PaymentInstrument paymentInstrument, String purpose) {
-        return false;
-    }
+    Payment pay(User user, Card card, String purpose, int paySym);
 }

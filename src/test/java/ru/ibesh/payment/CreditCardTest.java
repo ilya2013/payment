@@ -11,7 +11,7 @@ class CreditCardTest {
     @DisplayName("Not enough modeney -> NotEnoughMoneyException")
     public void whenNotEnoghMoneyThenThrowsNotEnoughMoneyException(){
         Exception exception = assertThrows(NotEnoughMoney.class, () -> {
-            PaymentInstrument paymentInstrument = new CreditCard(100, Currency.RUB, 50);
+            PaymentInstrument paymentInstrument = new CreditCard("3456", 100, Currency.RUB, 50);
             paymentInstrument.debitingFunds(160);
         });
         String expectedMessage = "Not enough money!";
@@ -21,7 +21,7 @@ class CreditCardTest {
 
     @Test
     public void whenUsesCreditCardLimitsThenTheyGettingLower(){
-        PaymentInstrument paymentInstrument = new CreditCard(100, Currency.RUB, 50);
+        PaymentInstrument paymentInstrument = new CreditCard("4523", 100, Currency.RUB, 50);
         System.out.println(paymentInstrument.getBalance());
         assertEquals(100,paymentInstrument.getBalance());
         paymentInstrument.debitingFunds(140);
