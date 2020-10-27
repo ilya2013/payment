@@ -1,4 +1,4 @@
-package ru.ibesh;
+package ru.ibesh.payment;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.extern.log4j.Log4j2;
-import ru.ibesh.payment.Card;
-import ru.ibesh.payment.Payment;
 
 import javax.persistence.*;
 import java.util.Objects;

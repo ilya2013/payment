@@ -13,8 +13,6 @@ import java.util.*;
 
 @SpringBootTest
 class AppTest {
-    @Autowired
-    UserRepository userRepository;
 
 //    @BeforeEach
 //    void setUp() {
@@ -23,17 +21,6 @@ class AppTest {
 
     @Test
     public void whenLoginAndUserExistsThenGetId(){
-        userRepository.deleteAll();
 
-        userRepository.save(new User(null, "login1", "login1", "9114587", new HashSet<>(), new HashSet<>()));
-        Card creditCard = new CreditCard("3454", 100, Currency.RUB, 10);
-        Set<Card> cards = new HashSet<>();
-        cards.add(creditCard);
-        User user = new User(null, "login3", "login1", "9114587", cards, new HashSet<>());
-        userRepository.save(user);
-        System.out.println(userRepository.findById(1L).get().getLogin());
-        System.out.println(userRepository.findById(2L).get().getCards().size());
-
-//TODO Update test
     }
 }

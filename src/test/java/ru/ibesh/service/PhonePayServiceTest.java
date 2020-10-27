@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.ibesh.User;
+import ru.ibesh.payment.User;
 import ru.ibesh.payment.*;
 
 import java.util.HashMap;

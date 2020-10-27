@@ -1,35 +1,28 @@
 package ru.ibesh.payment;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import ru.ibesh.User;
+import lombok.*;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
+@EqualsAndHashCode(callSuper = true)
 public class CreditCard extends Card{
     @Column(name = "limit_")
     private int limit;
     private int usedLimit = 0;
 
-    public CreditCard(String cardNumber,int balance, Currency currency) {
-        super(cardNumber, balance, currency);
+//    protected String cardNumber;
+//    protected int balance;
+//    protected Currency currency;
+//    protected User user;
+
+    public CreditCard(String cardNumber, int balance, Currency currency, User user){
+       super(cardNumber, balance, currency, user);
     }
 
-    public CreditCard(String cardNumber,int balance, Currency currency, int limit){
-        this(cardNumber,balance, currency);
-        this.limit = limit;
-    }
-
-    public CreditCard(Long id, String cardNumber, int balance, Currency currency, User user_id, int limit, int usedLimit) {
-        super(id, cardNumber, balance, currency, user_id);
+    public CreditCard(String cardNumber, int balance, Currency currency, User user, int limit, int usedLimit) {
+        super(cardNumber, balance, currency, user);
         this.limit = limit;
         this.usedLimit = usedLimit;
     }
@@ -61,13 +54,4 @@ public class CreditCard extends Card{
         return availableMoney() >= amount;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        return super.equals(o);
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
 }

@@ -1,6 +1,6 @@
 package ru.ibesh.service;
 
-import ru.ibesh.User;
+import ru.ibesh.payment.User;
 import ru.ibesh.payment.Card;
 import ru.ibesh.payment.Payment;
 
