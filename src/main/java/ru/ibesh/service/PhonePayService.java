@@ -3,6 +3,7 @@ package ru.ibesh.service;
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.Level;
+import org.springframework.stereotype.Service;
 import ru.ibesh.User;
 import ru.ibesh.payment.Payment;
 import ru.ibesh.payment.PaymentInstrument;
@@ -12,11 +13,12 @@ import ru.ibesh.service.check.PhoneChecker;
 
 @Log4j2
 @NoArgsConstructor
+@Service
 public class PhonePayService implements PayService {
-    private static PhoneChecker phoneChecker = new PhoneChecker();
-    private static PaymentHandler paymentHandler = new PaymentHandlerImpl();
+    private final PhoneChecker phoneChecker = new PhoneChecker();
+    private final PaymentHandler paymentHandler = new PaymentHandlerImpl();
 
-    public static Payment pay(User user, PaymentInstrument paymentInstrument, String purpose, int paySum) {
+    public  Payment pay(User user, PaymentInstrument paymentInstrument, String purpose, int paySum) {
         if (!phoneChecker.isValidPhoneNumber(purpose)){
             throw new InvalidPaymentPurpose("Invalid phone number format: " + purpose);
         }

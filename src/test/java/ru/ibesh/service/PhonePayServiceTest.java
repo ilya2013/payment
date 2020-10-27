@@ -38,7 +38,7 @@ class PhonePayServiceTest {
                 .findFirst()
                 .get();
         Status expected = Status.SUCCESS;
-        Payment payment = PhonePayService.pay(users.get(1), paymentInstrument, "8 911 176 60 54", 90);
+        Payment payment = new PhonePayService().pay(users.get(1), paymentInstrument, "8 911 176 60 54", 90);
         assertEquals(expected, payment.getStatus());
     }
 
@@ -49,7 +49,7 @@ class PhonePayServiceTest {
                 .stream()
                 .findFirst()
                 .get();
-        Assertions.assertThrows(NotEnoughMoney.class, () -> PhonePayService.pay(users.get(1), paymentInstrument, "8 911 176 60 54", 190));
+        Assertions.assertThrows(NotEnoughMoney.class, () -> new PhonePayService().pay(users.get(1), paymentInstrument, "8 911 176 60 54", 190));
     }
 
     @Test
@@ -59,6 +59,6 @@ class PhonePayServiceTest {
                 .stream()
                 .findFirst()
                 .get();
-        Assertions.assertThrows(InvalidPaymentPurpose.class, () -> PhonePayService.pay(users.get(1), paymentInstrument, "+361 911 176 60 54", 190));
+        Assertions.assertThrows(InvalidPaymentPurpose.class, () -> new PhonePayService().pay(users.get(1), paymentInstrument, "+361 911 176 60 54", 190));
     }
 }

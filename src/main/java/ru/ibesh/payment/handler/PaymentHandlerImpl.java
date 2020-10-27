@@ -8,8 +8,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Log4j2
 public class PaymentHandlerImpl implements PaymentHandler {
-    private String ip = "127.0.0.1";
-    private int port = 3020;
+    private final String ip = "127.0.0.1";
+    private final int port = 3020;
     private final AtomicInteger uid = new AtomicInteger();
 
     @Override

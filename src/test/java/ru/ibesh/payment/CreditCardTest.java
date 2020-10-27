@@ -1,15 +1,15 @@
 package ru.ibesh.payment;
 
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@SpringBootTest
 class CreditCardTest {
     @Test
     @DisplayName("Not enough modeney -> NotEnoughMoneyException")
-    public void whenNotEnoghMoneyThenThrowsNotEnoughMoneyException(){
+    void whenNotEnoghMoneyThenThrowsNotEnoughMoneyException(){
         Exception exception = assertThrows(NotEnoughMoney.class, () -> {
             PaymentInstrument paymentInstrument = new CreditCard(100, Currency.RUB, 50);
             paymentInstrument.debitingFunds(160);
@@ -20,7 +20,7 @@ class CreditCardTest {
     }
 
     @Test
-    public void whenUsesCreditCardLimitsThenTheyGettingLower(){
+     void whenUsesCreditCardLimitsThenTheyGettingLower(){
         PaymentInstrument paymentInstrument = new CreditCard(100, Currency.RUB, 50);
         System.out.println(paymentInstrument.getBalance());
         assertEquals(100,paymentInstrument.getBalance());
