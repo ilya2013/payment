@@ -1,0 +1,9 @@
+###
+GET http://127.0.0.1:9090/PhonePayment
+Accept: application/json
+
+###
+POST http://127.0.0.1:9090/PhonePayment/clients/login1/cards/3452234323/8(911)1765432/10
+Content-Type: application/json
+
+
