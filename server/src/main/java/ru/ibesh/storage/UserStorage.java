@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserStorage {
-    void addUser(User user);
+    User addUser(User user);
     Optional<User> getUser(Long id);
     Optional<User> findUserByLogin(String login);
 }

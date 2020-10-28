@@ -1,5 +1,6 @@
 package ru.ibesh.payment;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -7,6 +8,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class CreditCard implements PaymentInstrument{
     private String cardNumber;
     private int balance;
@@ -48,5 +50,15 @@ public class CreditCard implements PaymentInstrument{
     @Override
     public boolean isEnough2Pay(int amount) {
         return balance + (limit - usedLimit) >= amount;
+    }
+
+    @Override
+    public boolean isCard() {
+        return true;
+    }
+
+    @Override
+    public String getUniqueNumber() {
+        return cardNumber;
     }
 }

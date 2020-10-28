@@ -43,4 +43,14 @@ public class DebitCard implements PaymentInstrument {
         return balance >= amount;
     }
 
+    @Override
+    public boolean isCard() {
+        return true;
+    }
+
+    @Override
+    public String getUniqueNumber() {
+        return cardNumber;
+    }
+
 }

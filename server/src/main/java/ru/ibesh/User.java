@@ -15,7 +15,7 @@ import java.util.Set;
 @ToString
 @Log4j2
 public class User {
-    private long userId;
+    private Long userId;
     private String login;
     private String password;
     private String phoneNumber;
@@ -31,5 +31,9 @@ public class User {
         payments.put(payment.getPaymentUID(), payment);
         log.debug("Платеж: \"{}\" сохранён пользователю c логином \"{}\"", payment.getPaymentUID(), this.login);
 
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

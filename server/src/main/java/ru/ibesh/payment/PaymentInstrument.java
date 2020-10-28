@@ -7,4 +7,6 @@ public  interface PaymentInstrument {
     void debitingFunds(int amount);
     void addingFunds(int amount);
     boolean isEnough2Pay(int amount);
+    boolean isCard();
+    String getUniqueNumber();
 }
