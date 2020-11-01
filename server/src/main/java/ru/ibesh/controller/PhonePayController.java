@@ -2,7 +2,6 @@ package ru.ibesh.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +14,7 @@ import ru.ibesh.payment.Payment;
 import ru.ibesh.payment.PaymentInstrument;
 import ru.ibesh.payment.Status;
 import ru.ibesh.service.PhonePayService;
-import ru.ibesh.service.UserService;
-
-import javax.smartcardio.Card;
+import ru.ibesh.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("/PhonePay")
@@ -25,7 +22,7 @@ import javax.smartcardio.Card;
 @AllArgsConstructor
 public class PhonePayController {
     private final PhonePayService  phonePayService;
-    private final UserService  userService;
+    private final UserServiceImpl userServiceImpl;
 
 
     @PostMapping("")
@@ -42,11 +39,11 @@ public class PhonePayController {
     }
 
     private User findUser(String login){
-        return userService.findByLogin(login).orElseThrow(() -> new WrongParameterException("Неверный логин: " + login));
+        return userServiceImpl.findByLogin(login).orElseThrow(() -> new WrongParameterException("Неверный логин: " + login));
     }
 
     private PaymentInstrument findCard(User user, String cardNumber){
-        return userService.findCardByNumber(user, cardNumber).orElseThrow(() -> new WrongParameterException("Неверный номер карты: " + cardNumber));
+        return userServiceImpl.findCardByNumber(user, cardNumber).orElseThrow(() -> new WrongParameterException("Неверный номер карты: " + cardNumber));
     }
 
     private PaymentStatus mapStatus(Status status){

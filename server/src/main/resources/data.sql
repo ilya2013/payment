@@ -1,0 +1,1 @@
+insert into users (login, password, phone_number) VALUES ('login1', 'psw1', '8911654321');
